@@ -1,0 +1,7 @@
+{
+  "name": "Free Games",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
