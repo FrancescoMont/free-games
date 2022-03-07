@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  host: 'https://feeds-fake.herokuapp.com',
+  production: false,
+};
+export const environment2 = {
+  host: 'https://game-app-fake.herokuapp.com',
+  production: false,
 };
 
 /*

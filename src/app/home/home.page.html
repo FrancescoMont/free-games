@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>
+    <ion-title>Free Games</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+      <ion-searchbar  animated showCancelButton="focus" [(ngModel)]='searchTerm' placeholder="Search Some Values"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item>
+    <ion-label >Genre</ion-label>
+    <ion-select #S [(ngModel)]="tag" multiple="true" cancelText="Cancel" okText="Apply" (ionChange)="multipleTags(S.value)">
+      <ion-select-option *ngFor="let tag of tags">{{tag}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-card  *ngFor="let item of games | filter:searchTerm">
+      <img [src]="item.thumbnail" [routerLink]="['/home/' + item.id]"/>
+      <ion-card-header>
+       <ion-card-subtitle>{{item.platform}}</ion-card-subtitle>
+        <ion-card-title>{{item.title}}</ion-card-title>
+        <ion-badge color="medium">Genre: {{item.genre}}</ion-badge>
+      </ion-card-header>
+    <ion-card-content>
+      {{item.short_description}}
+    </ion-card-content>
+    <ion-item color="medium">
+      <ion-label>Add to favourites</ion-label>
+      <ion-toggle color="light" (click)="itemSelected(item)" (click)="addToFavourites()" ></ion-toggle>
+      <ion-icon name="heart"></ion-icon>
+    </ion-item>
+    
+     
+    </ion-card>
+  </ion-content>
+
+<ion-button  slot="fixed" expand="full" color="light" (click)='presentActionSheet()'>Platform</ion-button>

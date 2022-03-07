@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>
+    <ion-title>Favourite</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+      <ion-searchbar  animated showCancelButton="focus" [(ngModel)]='searchTerm'placeholder="Search Some Values"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card  *ngFor="let item of favourites | filter:searchTerm" >
+    <img [src]="item.thumbnail" [routerLink]="['/home/' + item.id]"/>
+    <ion-card-header>
+      <ion-card-subtitle>{{item.platform}}</ion-card-subtitle>
+      <ion-card-title>{{item.title}}</ion-card-title>
+      <ion-badge color="medium">Genre: {{item.genre}}</ion-badge>
+    </ion-card-header>
+    <ion-card-content>
+      {{item.short_description}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

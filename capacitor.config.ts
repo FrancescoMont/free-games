@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'Free Games',
+  appName: 'test3',
   webDir: 'www',
   bundledWebRuntime: false
 };

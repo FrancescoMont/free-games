@@ -1,3 +1,20 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="first" contentId="main" type="overlay">
+    <ion-header>
+      <ion-toolbar color="medium">
+        <ion-title>Games</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="close()" [routerLink]="['/home/']"><ion-icon name="home"></ion-icon>Home</ion-item>
+        
+        <ion-item (click)="close()" [routerLink]="['/favourites/']"><ion-icon name="heart"></ion-icon>Favourite</ion-item>
+        <ion-item (click)="close()" [routerLink]="['/login/']"><ion-icon name="log-in"></ion-icon>Log In</ion-item>
+        <ion-item (click)="close()" (click)="logOut()" ><ion-icon name="log-out"></ion-icon>Log Out</ion-item>
+        <ion-item (click)="close()" [routerLink]="['/slider/']" ><ion-icon name="information-circle-outline"></ion-icon>Tutorial</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet Id="main"></ion-router-outlet>
 </ion-app>

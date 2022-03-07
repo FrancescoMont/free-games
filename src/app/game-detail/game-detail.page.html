@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{game?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="game?.thumbnail"/>
+    <ion-card-header>
+      <ion-card-subtitle>{{game?.platform}}</ion-card-subtitle>
+      <ion-card-title>{{game?.title}}</ion-card-title>
+      <ion-badge color="medium">Genre: {{game?.genre}}</ion-badge>
+    </ion-card-header>
+    <ion-card-content color="light"  *ngIf="game?.minimum_system_requirements?.os!==null">
+      <div class="ion-text-center">
+        <h6>Min System requirements:</h6><br>
+      </div>
+      <ion-item>
+          <ion-icon name="logo-windows" ></ion-icon>
+          <p>OS:{{game?.minimum_system_requirements?.os}}</p>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="hardware-chip"></ion-icon>
+          <p>Processor:{{game?.minimum_system_requirements?.processor}}</p>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="save"></ion-icon>
+          <p>Memory:{{game?.minimum_system_requirements?.memory}}</p>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="eye"></ion-icon>
+          <p>Graphics:{{game?.minimum_system_requirements?.graphics}}</p>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="download"></ion-icon>
+          <p>Storage:{{game?.minimum_system_requirements?.storage}}</p>
+        </ion-item>
+    </ion-card-content >
+
+    <ion-card-content>
+      {{game?.description}}
+    </ion-card-content>
+    <!-- <ion-card-content *ngFor="let item of img">
+      <img [src]="item"/>
+    </ion-card-content> -->
+    
+    <ion-card-content  >
+      <h2  class="ion-text-center" >Gallery</h2>
+      <ion-slides [options]="sliderOpts">
+      <ion-slide *ngFor="let item of img">
+        <div class="slide">
+         <img [src]="item" tappable /> 
+        </div>
+      </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+
+    <ion-card-content>
+      <a>{{game?.game_url}}</a>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
